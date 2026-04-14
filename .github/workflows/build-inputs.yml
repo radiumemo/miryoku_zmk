@@ -28,6 +28,38 @@ on:
         - "QWERTY"
         - "QWERTZ"
         - "Workman"
+      extra:
+        description: 'extra'
+        required: false
+        default: 'default'
+        type: choice
+        options:
+        - "default"
+        - "azerty"
+        - "beakl15"
+        - "colemak"
+        - "colemakdhk"
+        - "dvorak"
+        - "halmak"
+        - "qwerty"
+        - "qwertz"
+        - "workman"
+      tap:
+        description: 'tap'
+        required: false
+        default: 'default'
+        type: choice
+        options:
+        - "default"
+        - "azerty"
+        - "beakl15"
+        - "colemak"
+        - "colemakdhk"
+        - "dvorak"
+        - "halmak"
+        - "qwerty"
+        - "qwertz"
+        - "workman"
       nav:
         description: 'nav'
         required: false
@@ -45,6 +77,16 @@ on:
         options:
         - "default"
         - "flip"
+      clipboard:
+        description: 'clipboard'
+        required: false
+        default: 'default'
+        type: choice
+        options:
+        - "default"
+        - "fun"
+        - "mac"
+        - "win"
       mapping:
         description: 'mapping'
         required: false
@@ -72,8 +114,11 @@ jobs:
       board: ${{ steps.process-inputs.outputs.board }}
       shield: ${{ steps.process-inputs.outputs.shield }}
       alphas: ${{ steps.process-inputs.outputs.alphas }}
+      extra: ${{ steps.process-inputs.outputs.extra }}
+      tap: ${{ steps.process-inputs.outputs.tap }}
       nav: ${{ steps.process-inputs.outputs.nav }}
       layers: ${{ steps.process-inputs.outputs.layers }}
+      clipboard: ${{ steps.process-inputs.outputs.clipboard }}
       mapping: ${{ steps.process-inputs.outputs.mapping }}
       custom_config: ${{ steps.process-inputs.outputs.custom_config }}
       kconfig: ${{ steps.process-inputs.outputs.kconfig }}
@@ -91,8 +136,11 @@ jobs:
           set-output "board" "${{ github.event.inputs.board }}"
           set-output "shield" "${{ github.event.inputs.shield }}"
           set-output "alphas" "${{ github.event.inputs.alphas }}"
+          set-output "extra" "${{ github.event.inputs.extra }}"
+          set-output "tap" "${{ github.event.inputs.tap }}"
           set-output "nav" "${{ github.event.inputs.nav }}"
           set-output "layers" "${{ github.event.inputs.layers }}"
+          set-output "clipboard" "${{ github.event.inputs.clipboard }}"
           set-output "mapping" "${{ github.event.inputs.mapping }}"
           set-output "custom_config" "${{ github.event.inputs.custom_config }}"
           set-output "kconfig" "${{ github.event.inputs.kconfig }}"
@@ -106,8 +154,11 @@ jobs:
       board: ${{ needs.process-inputs.outputs.board }}
       shield: ${{ needs.process-inputs.outputs.shield }}
       alphas: ${{ needs.process-inputs.outputs.alphas }}
+      extra: ${{ needs.process-inputs.outputs.extra }}
+      tap: ${{ needs.process-inputs.outputs.tap }}
       nav: ${{ needs.process-inputs.outputs.nav }}
       layers: ${{ needs.process-inputs.outputs.layers }}
+      clipboard: ${{ needs.process-inputs.outputs.clipboard }}
       mapping: ${{ needs.process-inputs.outputs.mapping }}
       custom_config: ${{ needs.process-inputs.outputs.custom_config }}
       kconfig: ${{ needs.process-inputs.outputs.kconfig }}
